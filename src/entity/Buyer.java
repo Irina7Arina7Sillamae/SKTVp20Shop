@@ -1,30 +1,32 @@
 
 package entity;
 
+import java.io.Serializable;
+import java.util.Arrays;
 
-public class Buyer {
+public class Buyer implements Serializable {
     
-    private String buyerName;
-    private String statusName;
+    private String buyername;
+    private String statusname;
     private String phone;
 
     public Buyer() {
     }
 
-    public String getBuyerName() {
-        return buyerName;
+    public String getBuyername() {
+        return buyername;
     }
 
-    public void setBuyerName(String buyerName) {
-        this.buyerName = buyerName;
+    public void setBuyername(String buyername) {
+        this.buyername = buyername;
     }
 
-    public String getStatusName() {
-        return statusName;
+    public String getStatusname() {
+        return statusname;
     }
 
-    public void setStatusName(String statusName) {
-        this.statusName = statusName;
+    public void setStatusname(String statusname) {
+        this.statusname = statusname;
     }
 
     public String getPhone() {
@@ -37,7 +39,10 @@ public class Buyer {
 
     @Override
     public String toString() {
-        return "Buyer{" + "buyerName=" + buyerName + ", statusName=" + statusName + ", phone=" + phone + '}';
+        return "Buyer{" + "buyername=" + buyername + ", statusname=" + statusname + ", phone=" + phone + '}';
     }
-     
+
+    
+   
+    
 }

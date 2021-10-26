@@ -1,15 +1,16 @@
 
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class History {
+public class History implements Serializable {
      
     private Buyer buyer;
     private Product product;
     private Date saleOfGoods;
-    private Date paymentforGoods;
+    private Date paymentForGoods;
 
     public History() {
     }
@@ -38,18 +39,21 @@ public class History {
         this.saleOfGoods = saleOfGoods;
     }
 
-    public Date getPaymentforGoods() {
-        return paymentforGoods;
+    public Date getPaymentForGoods() {
+        return paymentForGoods;
     }
 
-    public void setPaymentforGoods(Date paymentforGoods) {
-        this.paymentforGoods = paymentforGoods;
+    public void setPaymentForGoods(Date paymentForGoods) {
+        this.paymentForGoods = paymentForGoods;
     }
 
     @Override
     public String toString() {
-        return "History{" + "buyer=" + buyer + ", product=" + product + ", saleOfGoods=" + saleOfGoods + ", paymentforGoods=" + paymentforGoods + '}';
+        return "History{" + "buyer=" + buyer + ", product=" + product + ", saleOfGoods=" + saleOfGoods + ", paymentForGoods=" + paymentForGoods + '}';
+    }
+
+   
     }
 
     
-}
+    

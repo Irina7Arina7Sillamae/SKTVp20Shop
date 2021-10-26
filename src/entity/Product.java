@@ -1,8 +1,10 @@
 
 package entity;
 
+import java.io.Serializable;
 
-public class Product {
+
+public class Product implements Serializable {
     
     private String productName;
     private String productGroup;
@@ -49,8 +51,8 @@ public class Product {
         return "Product{" + "productName=" + productName + ", productGroup=" + productGroup + ", quantityOfGoods=" + quantityOfGoods + ", productPrice=" + productPrice + '}';
     }
 
-    
    
+    
     }
 
     
