@@ -8,8 +8,9 @@ public class Product implements Serializable {
     
     private String productName;
     private String productGroup;
-    private int quantityOfGoods;
-    private double productPrice;
+    private int quantity;
+    private int price;
+    private int count;
 
     public Product() {
     }
@@ -30,30 +31,38 @@ public class Product implements Serializable {
         this.productGroup = productGroup;
     }
 
-    public int getQuantityOfGoods() {
-        return quantityOfGoods;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuantityOfGoods(int quantityOfGoods) {
-        this.quantityOfGoods = quantityOfGoods;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public double getProductPrice() {
-        return productPrice;
+    public int getPrice() {
+        return price;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override
     public String toString() {
-        return "Product{" + "productName=" + productName + ", productGroup=" + productGroup + ", quantityOfGoods=" + quantityOfGoods + ", productPrice=" + productPrice + '}';
+        return "* Товар *" 
+                + " наименование: " + productName 
+                + ", группа товара: " + productGroup 
+                + ", поступило: " + quantity + "шт"
+                + ", цена за еденицу товара: " + price + "EUR"
+                + ", в наличии: " + count + "шт";
     }
 
-   
-    
-    }
-
-    
-
+}

@@ -9,8 +9,8 @@ public class History implements Serializable {
      
     private Buyer buyer;
     private Product product;
-    private Date saleOfGoods;
-    private Date paymentForGoods;
+    private Date saleDate;
+    private Date paymentDate;
 
     public History() {
     }
@@ -31,28 +31,31 @@ public class History implements Serializable {
         this.product = product;
     }
 
-    public Date getSaleOfGoods() {
-        return saleOfGoods;
+    public Date getSaleDate() {
+        return saleDate;
     }
 
-    public void setSaleOfGoods(Date saleOfGoods) {
-        this.saleOfGoods = saleOfGoods;
+    public void setSaleDate(Date saleDate) {
+        this.saleDate = saleDate;
     }
 
-    public Date getPaymentForGoods() {
-        return paymentForGoods;
+    public Date getPaymentDate() {
+        return paymentDate;
     }
 
-    public void setPaymentForGoods(Date paymentForGoods) {
-        this.paymentForGoods = paymentForGoods;
+    public void setPaymentDate(Date paymentDate) {
+        this.paymentDate = paymentDate;
     }
 
     @Override
     public String toString() {
-        return "History{" + "buyer=" + buyer + ", product=" + product + ", saleOfGoods=" + saleOfGoods + ", paymentForGoods=" + paymentForGoods + '}';
-    }
+        return "History{" + "покупатель=" + buyer 
+                + ", товар=" + product 
+                + ", товар продан=" + saleDate 
+                + ", товар оплачен=" + paymentDate 
+                + '}';
+      }
 
-   
     }
 
     

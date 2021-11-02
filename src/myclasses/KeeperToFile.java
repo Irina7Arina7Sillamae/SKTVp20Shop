@@ -4,7 +4,7 @@ package myclasses;
 import entity.Buyer;
 import entity.History;
 import entity.Product;
-import interfases.Keeping;
+import interfaces.Keeping;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -29,16 +29,16 @@ public class KeeperToFile implements Keeping{
             oos.writeObject(products);
             oos.flush();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(KeeperToFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(KeeperToFile.class.getName()).log(Level.SEVERE,"Нет такого файла", ex);
         } catch (IOException ex) {
-            Logger.getLogger(KeeperToFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(KeeperToFile.class.getName()).log(Level.SEVERE, "Ошибка ввода", ex);
         }
     }
 
    @Override
     public List<Product> loadProducts() {
         FileInputStream fis = null;
-         ObjectInputStream ois = null;
+        ObjectInputStream ois = null;
         List<Product> products = new ArrayList<>();         
         try {
             fis = new FileInputStream("products");
@@ -91,8 +91,8 @@ public class KeeperToFile implements Keeping{
     }
 
     @Override
-     public void saveHistories(List<History> histories) {
-      FileOutputStream fos = null;
+    public void saveHistories(List<History> histories) {
+        FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
             fos = new FileOutputStream("histories");
@@ -109,17 +109,17 @@ public class KeeperToFile implements Keeping{
 
     @Override
     public List<History> loadHistories() {
-       FileInputStream fis = null;
-         ObjectInputStream ois = null;
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
         List<History> histories = new ArrayList<>();         
         try {
             fis = new FileInputStream("histories");
             ois = new ObjectInputStream(fis);
             histories = (List<History>) ois.readObject();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(KeeperToFile.class.getName()).log(Level.SEVERE, "Файл books еще не создан", ex);
+            Logger.getLogger(KeeperToFile.class.getName()).log(Level.SEVERE, "Файл products еще не создан", ex);
         } catch (IOException ex) {
-            Logger.getLogger(KeeperToFile.class.getName()).log(Level.SEVERE, "Ошибка чтения books", ex);
+            Logger.getLogger(KeeperToFile.class.getName()).log(Level.SEVERE, "Ошибка чтения products", ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(KeeperToFile.class.getName()).log(Level.SEVERE, "Нет класса", ex);
         }

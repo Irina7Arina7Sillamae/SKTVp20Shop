@@ -2,7 +2,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 public class Buyer implements Serializable {
     
@@ -39,7 +38,9 @@ public class Buyer implements Serializable {
 
     @Override
     public String toString() {
-        return "Buyer{" + "buyername=" + buyername + ", statusname=" + statusname + ", phone=" + phone + '}';
+        return "* Покупатель * " + " Имя покупателя: " + buyername 
+                + ", статус: " + statusname 
+                + ", тел. " + phone ;
     }
 
     
