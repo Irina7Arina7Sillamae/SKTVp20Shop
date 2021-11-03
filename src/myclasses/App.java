@@ -16,9 +16,11 @@ import java.util.Scanner;
 public class App {
     
    private Scanner scanner = new Scanner(System.in);
+    //-----Данные библиотеки-----//
    private List<Product> products = new ArrayList<>();
    private List<Buyer> buyers = new ArrayList<>();
    private List<History> histories = new ArrayList<>();
+     //-----Сохранение-----//
    private Keeping keeping = new KeeperToFile();
    
    public App(){
@@ -28,7 +30,7 @@ public class App {
    }
     
     public void run() {  
-        
+       
         String repeat = "r";
         do{
             System.out.println("*** Выберите номер задачи: ***");
@@ -40,8 +42,10 @@ public class App {
             System.out.println("5: Продажа товара покупателю");
             System.out.println("6: Оплата товара покупателем");
             System.out.println("7: Список проданных товаров");
-             int task = scanner.nextInt(); scanner.nextLine();
+            int task = scanner.nextInt(); scanner.nextLine();
+            int n = 0;
             switch (task) {
+
                 case 0:
                     repeat="q";
                     System.out.println("*** Пока! ***");
@@ -53,6 +57,7 @@ public class App {
                             break;                     
                   
                 case 2:
+                    System.out.println("-------------------");
                     System.out.println("***  Список товара ***");
                     for(int i = 0; i < products.size(); i++) {
                         if(products.get(i) != null && products.get(i).getCount() > 0) {
@@ -69,6 +74,7 @@ public class App {
                         keeping.saveBuyers(buyers);
                            break;                                
                 case 4:
+                    System.out.println("-------------------");
                     System.out.println("*** Список покупателей ***");
                     for(int i = 0; i < buyers.size(); i++) {
                         if(buyers.get(i) != null) {
@@ -77,7 +83,8 @@ public class App {
                     }                
                     System.out.println("-------------------");
                     break;
-                     case 5:                      
+                case 5:
+                         System.out.println("-------------------");
                     System.out.println("*** Продажа товара ***");
                         History history = addHistory(); 
                         
@@ -100,7 +107,7 @@ public class App {
                 case 6:
                     System.out.println("*** Оплата купленного товара ***");
                     System.out.println("*** Список неоплаченного товара: ***");
-                    int n = 0;
+                    /*int n = 0;*/
                     for (int i = 0; i < histories.size(); i++) {
                         if(histories.get(i) != null 
                                 && histories.get(i).getPaymentDate() == null 
@@ -124,7 +131,7 @@ public class App {
                     if(n < 1){                     
                         System.out.println("*** Нет неоплаченных товаров! ***");
                         System.out.println("-------------------");
-                        break;
+                    break;
                     }
                     System.out.println("--------------------");
                     System.out.print("*** Выберите номер неоплаченного товара: ***");
@@ -144,8 +151,9 @@ public class App {
                     System.out.println("-------------------");
                 break;
                 case 7:
+                    System.out.println("-------------------");
                     System.out.println("*** Список неоплаченных товаров: ***");
-                    n = 0;
+                    
                     for (int i = 0; i < histories.size(); i++) {
                         if(histories.get(i) != null && histories.get(i).getPaymentDate() == null){
                             System.out.println(i+1+". Товар "
@@ -160,8 +168,9 @@ public class App {
                         System.out.println("*** Нет неоплаченных товаров! ***");
                         System.out.println("-------------------");
                         break;
-                    }
-                    break;   
+                    }                    
+                    break; 
+                    
               
                 default:
                     System.out.println("*** Выберите цифру из списка! ***");
@@ -172,25 +181,25 @@ public class App {
     
     private Product addProduct() {
         Product product = new Product();
-        System.out.println("*** Введите название товара: ***");  
+        System.out.println("* Введите название товара: *   ");  
         product.setProductName(scanner.nextLine());
-        System.out.println("*** Введите группу товара: ***");
+        System.out.println("* Введите группу товара: *   ");
         product.setProductGroup(scanner.nextLine());
-        System.out.println("*** Введите количество товара: ***");
+        System.out.println("* Введите количество товара: *   ");
         product.setQuantity((int) scanner.nextInt());scanner.nextLine();
         product.setCount(product.getQuantity());
-        System.out.println("*** Введите цену за еденицу товара: ***");
+        System.out.println("* Введите цену за еденицу товара: *   ");
         product.setPrice(scanner.nextInt());scanner.nextLine();
         return product;
         }
     
      private Buyer addBuyer() {
         Buyer buyer = new Buyer();
-        System.out.println("*** Введите имя покупателя: ***");  
+        System.out.println("* Введите имя покупателя: *   ");  
         buyer.setBuyername(scanner.nextLine());
-        System.out.println("*** Введите статус покупателя: ***");
+        System.out.println("* Введите статус покупателя: *   ");
         buyer.setStatusname(scanner.nextLine());
-        System.out.println("*** Введите телефон покупателя: ***");
+        System.out.println("* Введите телефон покупателя: *   ");
         buyer.setPhone(scanner.nextLine());
         return buyer;
         }
@@ -198,6 +207,7 @@ public class App {
      private History addHistory() {
         History history = new History();
         System.out.println("*** Список товаров: ***");
+        System.out.println("-------------------");
         int n = 0;
         for (int i = 0; i < products.size(); i++) {
             if(products.get(i) != null && products.get(i).getCount()>0){
@@ -208,23 +218,24 @@ public class App {
                                     .append(products[i].getProductName()[j].getProductGroup())
                                     .append(". ");
                 }*/
-                System.out.println("---"); 
+                
                 System.out.println(i+1
-                        +" * товар: "+products.get(i).getProductName()
-                        +" * группа товара: "+products.get(i).getProductGroup()
-                        +" * кол-во полученного: "+products.get(i).getQuantity() + "шт"                        +" * цена за еденицу: "+products.get(i).getPrice()
-                        +" * В наличии: " + products.get(i).getCount()+ "шт"                    
+                        +" // товар: "+products.get(i).getProductName()
+                        +" // группа товара: "+products.get(i).getProductGroup()
+                        +" // кол-во полученного: "+products.get(i).getQuantity() + "шт"                        +" * цена за еденицу: "+products.get(i).getPrice()
+                        +" // В наличии: " + products.get(i).getCount()+ "шт"                    
                 );
                 n++;
             }
         }
         if(n<1) {
             System.out.println("*** Нет товаров для продажи! ***");
-            return null;
+            return history;
         }
         
         System.out.print("*** Выберите номер товара: ***");
         int numberProduct = scanner.nextInt(); scanner.nextLine();
+        System.out.println("-------------------");
         System.out.println("*** Список покупателей: ***");
         for (int i = 0; i < buyers.size(); i++) {
             if(buyers.get(i) != null){
